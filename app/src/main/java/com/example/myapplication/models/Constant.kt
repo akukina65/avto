@@ -9,8 +9,8 @@ import io.github.jan.supabase.postgrest.Postgrest
 object Constant {
 
         val supabase = createSupabaseClient(
-            supabaseUrl = "https://youmokksowbzaeufikwr.supabase.co", // Замените на ваш URL
-            supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlvdW1va2tzb3diemFldWZpa3dyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDA2NjgzMTgsImV4cCI6MjA1NjI0NDMxOH0.A60-lSYhnL8Bx8WU5Bc-kpoNObqsLU5OgilYnfiNEeQ" // Замените на ваш ключ
+            supabaseUrl = "https://tmzsltvdankxnszuzpfs.supabase.co", // Замените на ваш URL
+            supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRtenNsdHZkYW5reG5zenV6cGZzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDE1NTI1MTQsImV4cCI6MjA1NzEyODUxNH0.hGGzLHAT5lf6PVKXXaWcLLzQXNun1Hoyg22YVgFFniM" // Замените на ваш ключ
         ) {
             install(Postgrest) // Установка Postgrest
             install(Auth)

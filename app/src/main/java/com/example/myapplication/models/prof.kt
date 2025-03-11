@@ -1,5 +1,6 @@
 package com.example.myapplication.models
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -9,12 +10,12 @@ data class Users(
     val password: String,
 )
 @Serializable
-data class User(
-    val id: Int,
-    val firstName: String,
-    val lastName: String,
-    val middleName: String,
-    val email: String,
-    val password: String,
-    val birthDate: String
+data class Profile(
+
+    val surname: String,
+    val name: String,
+    val patronymic: String,
+    @SerialName("datebirth") //Аннотация указывает, что при сериализации/десериализации это свойство должно соответствовать ключу "datebirth" в формате данных (например, JSON)
+    val dateBirth:String?,
+    val image:String?
 )

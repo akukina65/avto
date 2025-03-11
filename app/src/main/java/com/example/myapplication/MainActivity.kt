@@ -1,73 +1,29 @@
 package com.example.myapplication
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Button
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.lifecycle.lifecycleScope
 import com.example.myapplication.models.Constant.supabase
-import io.github.jan.supabase.SupabaseClient
-import io.github.jan.supabase.createSupabaseClient
-import io.github.jan.supabase.postgrest.Postgrest
-import io.github.jan.supabase.postgrest.postgrest
-import kotlinx.coroutines.launch
 import kotlinx.serialization.Serializable
 
-import io.github.jan.supabase.auth.Auth
 import io.github.jan.supabase.postgrest.from
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import androidx.compose.ui.Modifier
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.unit.dp
 
 
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
-
-import androidx.compose.ui.unit.dp
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
-import com.example.myapplication.models.authenticateUser
-import com.example.myapplication.ui.theme.Butt2
-import com.example.myapplication.ui.theme.HorizontalGradientBackgroundExample
-
-import com.example.myapplication.ui.theme.MyButtons
-
-
-import com.example.myapplication.ui.theme.Navigation
-
-import com.example.myapplication.ui.theme.SplashScreen
-
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-
-import io.github.jan.supabase.createSupabaseClient
-import io.github.jan.supabase.postgrest.postgrest
+import com.example.myapplication.function.Navigation
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -125,32 +81,36 @@ class MainActivity : ComponentActivity() {
 
 
 }
-//@Serializable
-//data class Users(
-//    val id: Int,
-//    val email:String,
-//    val password:String,
-//)
-//
-//@Composable
-//fun UserList()
-//{
-//    val users = remember { mutableStateListOf<Users>()}
-//    LaunchedEffect (Unit){ withContext(Dispatchers.IO){
-//        val result = supabase.from("Users").select().decodeList<Users>()
-//            users.addAll(result)
-//
-//    }
-//        }
-//
-//Column {
-//    LazyColumn {
-//        items(users) { userItem ->
-//            ListItem(headlineContent = { Text(text = userItem.email) }
-//
-//            )
-//        }
-//    }
+@Serializable
+data class Users(
+    val id: Int,
+    val firstName: String,
+    val lastName: String,
+    val middleName: String,
+    val email: String,
+    val password: String,
+    val birthDate: String
+)
+
+@Composable
+fun UserList()
+{
+    val users = remember { mutableStateListOf<Users>()}
+    LaunchedEffect (Unit){ withContext(Dispatchers.IO){
+        val result = supabase.from("Users").select().decodeList<Users>()
+            users.addAll(result)
+
+    }
+        }
+
+
+    LazyColumn {
+        items(users) { userItem ->
+            ListItem(headlineContent = { Text(text = userItem.email) }
+
+            )
+
+    }
 //    var newUser by remember { mutableStateOf("") }
 //    val composableScope = rememberCoroutineScope()
 //    Row {
@@ -169,8 +129,8 @@ class MainActivity : ComponentActivity() {
 //            Text("Save")
 //        }
 //    }
-//}
-//}
+}
+}
 
 //@Composable
 //fun LoginScreen(onLoginSuccess: () -> Unit) { // Добавляем функцию обратного вызова при успешной аутентификации
