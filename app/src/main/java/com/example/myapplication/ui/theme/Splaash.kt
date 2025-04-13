@@ -22,7 +22,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.myapplication.R
+import com.example.supabasesimpleproject.R
 import kotlinx.coroutines.delay
 
 import androidx.compose.material3.Text

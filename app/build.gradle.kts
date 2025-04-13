@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.myapplication"
+    namespace = "com.example.supabasesimpleproject"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.myapplication"
+        applicationId = "com.example.supabasesimpleproject"
         minSdk = 26
         targetSdk = 34
         versionCode = 1
@@ -75,7 +75,7 @@ dependencies {
     implementation(libs.postgrest.kt)
     implementation(libs.auth.kt)
     implementation(libs.realtime.kt)
-
+    implementation (libs.storage.kt)
     //Ktor
     implementation(libs.ktor.client.android)
 
@@ -85,7 +85,9 @@ dependencies {
     //ViewModel
     implementation(libs.androidx.lifecycle.viewmodel.compose)
 
+    //LiveData
+    implementation (libs.androidx.runtime.livedata)
 
-
-
+    //Coil
+    implementation(libs.coil.compose)
 }

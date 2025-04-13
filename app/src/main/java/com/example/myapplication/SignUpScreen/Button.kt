@@ -1,5 +1,6 @@
 package com.example.myapplication.SignUpScreen
 
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -28,8 +29,16 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.myapplication.R
+import com.example.supabasesimpleproject.R
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.ui.focus.FocusDirection
+import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 
 @Composable
 fun ButtonNavigation(label: String, onClick:()-> Unit, ) {
@@ -160,5 +169,107 @@ fun TextFieldPassword(value: String, onvaluechange: (String) -> Unit) {
         modifier = Modifier
             .width(350.dp) // Установка фиксированной ширины
             .padding(bottom = 16.dp)
+    )
+}
+@Composable
+fun TextFieldEdit(value: String, onValueChanged: (String) -> Unit) {
+    val focusManager = LocalFocusManager.current
+    androidx.compose.material3.TextField(
+        value = value,
+        textStyle = MaterialTheme.typography.displayMedium,
+        onValueChange = {
+            onValueChanged(it)
+        },
+        modifier = Modifier.fillMaxWidth().padding(horizontal = 10.dp),
+        colors = TextFieldDefaults.colors(
+            unfocusedContainerColor = Color(0xFFE0FFFF),
+            unfocusedTextColor = Color.Black,
+            focusedContainerColor = Color(0xFFE0FFFF),
+            focusedTextColor = Color.Black,
+            focusedIndicatorColor = Color(0xFFE0FFFF),
+            unfocusedIndicatorColor = Color(0xFFE0FFFF),
+            disabledIndicatorColor = Color(0xFFE0FFFF)
+        ),
+        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
+        keyboardActions = KeyboardActions(
+            onNext = { focusManager.moveFocus(FocusDirection.Down) }
+        ),
+        shape = RoundedCornerShape(15.dp),
+    )
+}
+@Composable
+fun TextFieldDropDown(value: String,onExpandedChange: (Boolean) -> Unit) {
+
+    val focusManager = LocalFocusManager.current
+    androidx.compose.material3.TextField(
+        value = value,
+        textStyle = MaterialTheme.typography.displayMedium,
+        onValueChange = {
+
+        },
+        trailingIcon = {
+            IconButton(onClick = { onExpandedChange(true) }) {
+                Icon(Icons.Default.ArrowDropDown, contentDescription = null)
+            }
+        },
+        readOnly = true,
+        modifier = Modifier.fillMaxWidth().padding(horizontal = 10.dp),
+        colors = TextFieldDefaults.colors(
+            unfocusedContainerColor = Color(0xFFE0FFFF),
+            unfocusedTextColor = Color.Black,
+            focusedContainerColor = Color(0xFFE0FFFF),
+            focusedTextColor = Color.Black,
+            focusedIndicatorColor = Color(0xFFE0FFFF),
+            unfocusedIndicatorColor = Color(0xFFE0FFFF),
+            disabledIndicatorColor = Color(0xFFE0FFFF)
+        ),
+        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
+        keyboardActions = KeyboardActions(
+            onNext = { focusManager.moveFocus(FocusDirection.Down) }
+        ),
+        shape = RoundedCornerShape(15.dp),
+    )
+}
+@Composable
+fun TextFieldSearch(value: String, onvaluechange: (String) -> Unit) {
+    androidx.compose.material3.TextField(
+        value = value,
+        leadingIcon = {
+            Icon(
+                painter = painterResource(id = R.drawable.s),
+                contentDescription = "",
+                modifier = Modifier.size(24.dp) // Установите желаемый размер
+            )
+        },
+        onValueChange = { onvaluechange(it) },
+        colors = TextFieldDefaults.colors(
+            unfocusedContainerColor = Color(0xFFE0FFFF),
+            unfocusedTextColor = Color.Black,
+            focusedContainerColor = Color.White,
+            focusedTextColor = Color.Black,
+            focusedIndicatorColor = Color(0xFFE0FFFF),
+            unfocusedIndicatorColor = Color(0xFFE0FFFF),
+            disabledIndicatorColor = Color(0xFFE0FFFF)
+        ),
+        placeholder = {
+            Text(
+                "Поиск",
+                color = Color.Gray,
+                fontSize = 15.sp,
+                fontWeight = FontWeight.W800,
+                modifier = Modifier.padding(start = 10.dp)
+            )
+        },
+        keyboardOptions = KeyboardOptions(
+            keyboardType = KeyboardType.Text
+        ),
+        modifier = Modifier
+            .fillMaxWidth() // Растягиваем на всю ширину
+            .padding(horizontal = 16.dp) // Добавляем отступы по бокам
+            .border(
+                width = 1.dp, // Толщина рамки
+                color = Color.Blue,
+                shape = RoundedCornerShape(10.dp),
+            )
     )
 }

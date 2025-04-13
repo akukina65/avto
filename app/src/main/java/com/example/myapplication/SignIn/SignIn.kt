@@ -30,7 +30,7 @@ import com.example.myapplication.SignUp.ResultState
 import com.example.myapplication.SignUpScreen.ButtonNavigation
 import com.example.myapplication.SignUpScreen.TextFieldEmail
 import com.example.myapplication.SignUpScreen.TextFieldPassword
-import com.example.myapplication.R
+import com.example.supabasesimpleproject.R
 import androidx.compose.ui.draw.scale
 @Composable
 fun SignInScreen(navController: NavController, signInViewModel: SignInViewModel = viewModel())
